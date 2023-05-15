@@ -42,10 +42,10 @@ function App() {
       <Timer 
       expiryTimestamp={time}
       handleStudyButton={handleStudyButton}
+      isStudy={isStudy}
       ></Timer>
       <input type='text' placeholder='Session name' onChange={e => setSessionName(e.target.value)}></input>
       {timeElements}
-
     </>
   )
 }

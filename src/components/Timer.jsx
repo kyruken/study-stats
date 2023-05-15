@@ -28,7 +28,7 @@ function MyStopwatch(props) {
       <p>{isRunning ? 'Running' : 'Not running'}</p>
       <button onClick={start}>Start</button>
       <button onClick={pause}>Pause</button>
-      <button onClick={handleTakeBreak}>Take Break</button>
+      <button onClick={handleTakeBreak}>{props.isStudy ? 'Take Break' : 'Start Studying'}</button>
       <button onClick={reset}>Reset</button>
     </div>
   );
