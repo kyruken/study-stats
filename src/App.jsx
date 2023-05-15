@@ -1,14 +1,33 @@
 import './App.css'
 import Timer from './components/Timer'
+import { useState } from 'react'
 
 function App() {
+
+  const [isStudy, setIsStudy] = useState(true);
+  const [timedEvents, setTimedEvents] = useState([]);
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+  
+  const handleStudyButton = (hours, minutes, seconds) => {
+    setIsStudy(prevState => !prevState);
+    timedEvents.push(`${hours}:${minutes}:${seconds}`)
+  }
+
+  const timeElements = timedEvents.map(event => {
+    return <div>
+      {event}
+    </div>
+  })
 
   return (
     <>
       <h1>Study stats</h1>
-      <Timer expiryTimestamp={time}></Timer>
+      <Timer 
+      expiryTimestamp={time}
+      handleStudyButton={handleStudyButton}
+      ></Timer>
+      {timeElements}
+
     </>
   )
 }

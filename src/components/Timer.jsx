@@ -1,6 +1,6 @@
 import { useStopwatch } from 'react-timer-hook';
 
-function MyStopwatch() {
+function MyStopwatch(props) {
   const {
     seconds,
     minutes,
@@ -11,6 +11,11 @@ function MyStopwatch() {
     pause,
     reset,
   } = useStopwatch({ autoStart: true });
+
+  const handleTakeBreak = () => {
+    reset();
+    props.handleStudyButton(hours, minutes, seconds);
+  }
 
 
   return (
@@ -23,6 +28,7 @@ function MyStopwatch() {
       <p>{isRunning ? 'Running' : 'Not running'}</p>
       <button onClick={start}>Start</button>
       <button onClick={pause}>Pause</button>
+      <button onClick={handleTakeBreak}>Take Break</button>
       <button onClick={reset}>Reset</button>
     </div>
   );
